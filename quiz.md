@@ -13,6 +13,7 @@ return statement，從stack移除:console.log("start")->setTimeout (Web API執�
 webapis:Web API中計時器執行，setTimeout stack移除。setTimeout執行1秒至task queu
 event loop:看stack清空時推setTimeout上stack，stack:console.log("Timeout")
 所以console:start->IIFE->end->Timeout
+
 (2) 
 回答:
 
@@ -25,6 +26,7 @@ return statement，從stack移除:console.log("start")->setTimeout (Web API執�
 webapis:Web API中計時器執行，setTimeout stack移除。setTimeout執行0秒至task queu
 event loop:看stack清空時推setTimeout上stack，stack:console.log("Timeout")
 所以console:start->IIFE->end->Timeout
+
 (3) 
 回答:
 
@@ -36,6 +38,7 @@ stack:
 main()->foo()呼叫後console.log("foo") ,
 bar()呼叫後console.log("bar") ,
 baz()呼叫後console.log("baz")
+
 (4) 
 回答:
 
