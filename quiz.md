@@ -9,9 +9,13 @@ start->IIFE->end->Timeout
 因為async callback:
 
 stack:main()->console.log("end")->console.log("IIFE")->setTimeout->console.log("start")
+
 return statement，從stack移除:console.log("start")->setTimeout (Web API執行1秒)->console.log("IIFE")->console.log("end")
+
 webapis:Web API中計時器執行，setTimeout stack移除。setTimeout執行1秒至task queu
+
 event loop:看stack清空時推setTimeout上stack，stack:console.log("Timeout")
+
 所以console:start->IIFE->end->Timeout
 
 (2) 
