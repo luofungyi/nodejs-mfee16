@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>XHR</title>
+  </head>
+  <body>
+    <button id="syncBtn">同步</button>
+    <button id="asyncBtn">非同步</button>
+    <button id="countBtn">計數器</button>
+    <div id="count">0</div>
+    <div id="message">XXXXX</div>
+  </body>
+  <script>
+    var message = document.getElementById("message");
+    var syncBtn = document.getElementById("syncBtn");
+    var asyncBtn = document.getElementById("asyncBtn");
+    var countBtn = document.getElementById("countBtn");
+    var count = document.getElementById("count");
+
+    countBtn.addEventListener("click", function () {
+      count.innerText = parseInt(count.innerText, 10) + 1;
+    });
+
+    asyncBtn.addEventListener("click", function () {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://34.217.120.25:3000", true);
+        xhr.onload = function (){
+            message.innerText = `非同步請求 load ${this.responseText}`
+        };
+        xhr.send();
+    });
+
+    syncBtn.addEventListener("click", function () {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://34.217.120.25:3000", false);
+        xhr.onload = function () {
+            message.innerText = `同步請求 load ${this.responseText}`;
+        };
+        xhr.send();
+    })
+
+  </script>
+</html>
