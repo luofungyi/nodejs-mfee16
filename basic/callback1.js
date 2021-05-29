@@ -6,6 +6,62 @@ let doWork = function (job, timer, cb) {
   };
   
   let dt = new Date();
+//   console.log(`開始工作 at ${dt.toISOString()}`);
+//   doWork("刷牙", 2000, function (err, result) {
+//     if (err) {cl
+//       console.error(err);
+//       return;
+//     } 
+//   });
+//   console.log(result);
+
+//     doWork("吃早餐", 3000, function (err, result) {
+//         if (err) {
+//           console.error(err);
+//           return;
+//      }
+//    });
+//   console.log(result);
+
+//         doWork("做功課", 3000, function (err, result) {
+//             if (err) {
+//               console.error(err);
+//               return;
+//      }
+//   console.log(result);
+//     });
+
+// -------------------------------------------------------------
+//   console.log(`開始工作 at ${dt.toISOString()}`);
+//   doWork("刷牙", 2000, function (err, result) {
+//     if (err) {cl
+//       console.error(err);
+//       return;
+//     } 
+//   });
+//   console.log(result);
+
+//     doWork("吃早餐", 3000, function (err, result) {
+//         if (err) {
+//           console.error(err);
+//           return;
+//      }
+//    });
+//   console.log(result);
+
+//         doWork("做功課", 3000, function (err, result) {
+//             if (err) {
+//               console.error(err);
+//               return;
+//      }
+//   console.log(result);
+//     });
+
+// let dt =new Date();
+// console.log(`開始工作 at ${dt.toISOString()}`);
+// brush();
+
+// -----------------------------------------------------------
   console.log(`開始工作 at ${dt.toISOString()}`);
   doWork("刷牙", 2000, function (err, result) {
     if (err) {cl
