@@ -64,7 +64,7 @@ let doWork = function (job, timer, cb) {
 // -----------------------------------------------------------
   console.log(`開始工作 at ${dt.toISOString()}`);
   doWork("刷牙", 2000, function (err, result) {
-    if (err) {cl
+    if (err) {
       console.error(err);
       return;
     }
