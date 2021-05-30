@@ -62,6 +62,18 @@
         };
         xhr.send();
       });
+
+      // 小賴老師寫的
+      // xhr.onload = function () {
+      //     console.log(xhr);
+      //     if (this.status === 200) {
+      //       resolve(xhr.responseText);
+      //     } else {
+      //       reject(xhr.status);
+      //     }
+      //   };
+      //   xhr.send();
+      // });
     }
         asyncBtn.addEventListener("click", function () {
           xhrPromise()
