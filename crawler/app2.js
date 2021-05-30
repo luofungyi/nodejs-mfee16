@@ -8,9 +8,9 @@ function fsPromise() {
 
         fs.readFile("stock.txt", "utf8", (err, data) => {
             if (err) {
-                resolve("讀檔錯誤", err);
+                resolve(`讀到的 stock code: ${data}`);
             }else {
-                reject(`讀到的 stock code: ${data}`)};
+                reject("讀檔錯誤", err)};
     });
   });
 }
