@@ -5,7 +5,7 @@
   </head>
   <body>
     <button id="syncBtn">同步</button>
-    <button id="asyncBtn">非同步</button>
+    <button id="asyncBtn">非同步(promise)</button>
     <button id="countBtn">計數器</button>
     <div id="count">0</div>
     <div id="message">XXXXX</div>
@@ -21,23 +21,62 @@
       count.innerText = parseInt(count.innerText, 10) + 1;
     });
 
-    asyncBtn.addEventListener("click", function () {
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "http://34.217.120.25:3000", true);
-        xhr.onload = function (){
-            message.innerText = `非同步請求 load ${this.responseText}`
-        };
-        xhr.send();
-    });
+// ---------------------------------------------------------------
+    // asyncBtn.addEventListener("click", function () {
+    //     var xhr = new XMLHttpRequest();
+    //     xhr.open("GET", "http://34.217.120.25:3000", true);
+    //     xhr.onload = function (){
+    //         message.innerText = `非同步請求 load ${this.responseText}`
+    //     };
+    //     xhr.send();
+    // });
 
-    syncBtn.addEventListener("click", function () {
+    // syncBtn.addEventListener("click", function () {
+    //     var xhr = new XMLHttpRequest();
+    //     xhr.open("GET", "http://34.217.120.25:3000", false);
+    //     xhr.onload = function () {
+    //         message.innerText = `同步請求 load ${this.responseText}`;
+    //     };
+    //     xhr.send();
+    // })
+// ----------------------------------------------------------------------
+
+// new Promise(function (resolve, reject) {});
+    // Promise 是一個表示非同步運算的「最終」「完成或失敗」的「物件」
+    //    最終成功 --人--> resolve --Promise--> then
+    //    最終失敗 --人--> reject  --Promise--> catch
+    function xhrPromise() {
+      return new Promise((resolve, reject) => {
+        //?????
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", "http://34.217.120.25:3000", false);
-        xhr.onload = function () {
-            message.innerText = `同步請求 load ${this.responseText}`;
-        };
-        xhr.send();
-    })
+      xhr.open("GET", "http://34.217.120.25:3000", true);
+      xhr.onload = function () {
+        if (this.status === 200) {
+          message.innerText = `非同步請求 load ${this.responseText}`;
+        } else {
+          message.innerText = `非同步請求 有問題 ${this.status}`;
+        }
+      };
+      xhr.send();
+    }
+
+    asyncBtn.addEventListener("click", function () {
+      xhrPromise()
+        .then((result) => {
+          onsole.log(result)})
+        .catch((error) => {
+          console.error("發生錯誤", err)});
+      // var xhr = new XMLHttpRequest();
+      // xhr.open("GET", "http://34.217.120.25:3000", true);
+      // xhr.onload = function () {
+      //   if (this.status === 200) {
+      //     message.innerText = `非同步請求 load ${this.responseText}`;
+      //   } else {
+      //     message.innerText = `非同步請求 有問題 ${this.status}`;
+      //   }
+      // };
+      // xhr.send();
+    });
 
   </script>
 </html>

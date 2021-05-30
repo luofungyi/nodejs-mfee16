@@ -34,3 +34,4 @@ let doWork = function (job, timer, cb) {
       // rejected 處理失敗 reject
       console.error("發生錯誤", err);
     });
+    
