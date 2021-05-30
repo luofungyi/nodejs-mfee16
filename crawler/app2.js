@@ -1,4 +1,5 @@
 
+
 const axios = require("axios");
 const fs = require("fs");
 
@@ -10,7 +11,7 @@ function fsPromise() {
             if (err) {
                 resolve(`讀到的 stock code: ${data}`);
             }else {
-                reject("讀檔錯誤", err)}; 
+                reject("讀檔錯誤", err)};
     });
   });
 }
