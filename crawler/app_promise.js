@@ -13,23 +13,25 @@ function readfilePromise() {
           })
       })
 }
-
 readfilePromise().then((data) => {
-    return axios.get("https://www.twse.com.tw/exchangeReport/STOCK_DAY", {
-      params: {
-        response: "JSON",
-        date: moment().format("YYYYMMDD"),
-        stockNo: data
-      }
-    });
-  })
-
-  .then(function (response) {
-    if (response.data.stat === "OK") {
-      console.log(response.data.date);
-      console.log(response.data.title);
+  return axios.get("https://www.twse.com.tw/exchangeReport/STOCK_DAY", {
+    params: {
+      response: JSON,
+      date: moment().format("YYYYMMDD"),
+      stockNo: data
     }
   });
+})
+
+
+.then(function (result) {
+    if (result.data.stat === "OK") {
+      console.log(result.data.data);
+      console.log(result.data.title);
+    }
+  })
+
+ 
 
 
 // fs.readFile("stock.txt", "utf8", (err, data) => {
