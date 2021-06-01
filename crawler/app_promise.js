@@ -1,28 +1,26 @@
-
-
 const axios = require("axios");
 const fs = require("fs");
+const moment = require("moment");
 
-
-function fsPromise() {
+function readfilePromise() {
     return new Promise((resolve, reject) => {
-
         fs.readFile("stock.txt", "utf8", (err, data) => {
             if (err) {
-                resolve(`讀到的 stock code: ${data}`);
+                reject(err);
             }else {
-                reject("讀檔錯誤", err)};
-    });
-  });
+                resolve(data)
+              }
+          })
+      })
 }
 
-fsPromise().then((data) => {
+readfilePromise().then((data) => {
     return axios.get("https://www.twse.com.tw/exchangeReport/STOCK_DAY", {
       params: {
-        response: "json",
-        date: "20210523",
-        stockNo: data,
-      },
+        response: "JSON",
+        date: moment().format("YYYYMMDD"),
+        stockNo: data
+      }
     });
   })
 
