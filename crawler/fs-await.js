@@ -2,7 +2,7 @@ const axios = require("axios");
 // 引入promise版的fs，就不需要自己寫
 const fs = require("fs/promises");
 const moment = require("moment");
-
+ 
 // function readFilePromise() {
 // return new Promise((resolve, reject) => {
 //            fs.readFile("stock.txt", "utf8", (err, data) => {
