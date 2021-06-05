@@ -5,18 +5,23 @@ const Promise = require("bluebird");
 
 console.log(Promise);
 
-function readfilePromise() {
-    return new Promise((resolve, reject) => {
-        fs.readFile("stock.txt", "utf8", (err, data) => {
-            if (err) {
-                reject(err);
-            }else {
-                resolve(data)
-              }
-          })
-      })
-}
-readfilePromise().then((data) => {
+// function readfilePromise() {
+//     return new Promise((resolve, reject) => {
+//         fs.readFile("stock.txt", "utf8", (err, data) => {
+//             if (err) {
+//                 reject(err);
+//             }else {
+//                 resolve(data)
+//               }
+//           })
+//       })
+// }
+
+// 用 bluebird 包 callback 版本的 readFile
+const resdFildBlue = Promise.promisify(fs.readFile);
+
+
+readfileBlue("stock.txt", "utf-8").then((data) => {
   return axios.get("https://www.twse.com.tw/exchangeReport/STOCK_DAY", {
     params: {
       response: JSON,
