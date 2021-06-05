@@ -1,20 +1,22 @@
 const axios = require("axios");
-// 引入promise版的fs，就不需要自己寫
-const fs = require("fs/promises");
+const fs = require("fs");
 const moment = require("moment");
- 
-// function readfilePromise() {
-//     return new Promise((resolve, reject) => {
-//         fs.readFile("stock.txt", "utf8", (err, data) => {
-//             if (err) {
-//                 reject(err);
-//             }else {
-//                 resolve(data)
-//               }
-//           })
-//       })
-// }
-fs.readFile("stock.txt", "utf-8").then((data) => {
+const Promise = require("bluebird");
+
+console.log(Promise);
+
+function readfilePromise() {
+    return new Promise((resolve, reject) => {
+        fs.readFile("stock.txt", "utf8", (err, data) => {
+            if (err) {
+                reject(err);
+            }else {
+                resolve(data)
+              }
+          })
+      })
+}
+readfilePromise().then((data) => {
   return axios.get("https://www.twse.com.tw/exchangeReport/STOCK_DAY", {
     params: {
       response: JSON,
