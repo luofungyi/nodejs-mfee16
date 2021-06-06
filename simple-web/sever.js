@@ -26,7 +26,7 @@ const server = http.createServer(async (req, res) => {
   // 路由 router
   switch (path) {
     case "":
-      res.end("Hi 這是首頁 我是小賴");
+      res.end("Hi 這是首頁 我是Teddy");
       break;
     case "/test":
       res.setHeader("Content-Type", "text/html;charset=UTF-8");
