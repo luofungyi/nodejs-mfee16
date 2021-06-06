@@ -3,12 +3,13 @@ const axios = require("axios");
 const fs = require("fs/promises");
 const moment = require("moment");
 const mysql = require("mysql");
+require('dotenv').config()
 //資料庫連線
 const connection = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    password : 'teddy8233',
-    database : 'stock'
+    host     : process.env.DB_HOST,
+    user     : process.env.DB_USER,
+    password : process.env.DB_PASS,
+    database : process.env.DB_DATA,
   });
 
 const conn = Promise.promisifyAll(connection);
@@ -40,7 +41,6 @@ const conn = Promise.promisifyAll(connection);
          connection.end();
     }
 })();
-
 
 
 
