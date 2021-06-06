@@ -1,17 +1,17 @@
+const Promise = require("bluebird");
 const axios = require("axios");
 const fs = require("fs/promises");
 const moment = require("moment");
 const mysql = require("mysql");
-const Promise = require("bluebird");
 //資料庫連線
-let connection = mysql.createConnection({
+const connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
     password : 'teddy8233',
     database : 'stock'
   });
 
-connection = Promise.promisifyAll(connection);
+const conn = Promise.promisifyAll(connection);
 
 (async function(){
     try{
@@ -40,6 +40,10 @@ connection = Promise.promisifyAll(connection);
          connection.end();
     }
 })();
+
+
+
+
 //connection.end();
 //fsPromise()
 // fs.readFile("stock.txt","utf8")
