@@ -31,7 +31,10 @@ const conn = Promise.promisifyAll(connection);
             //console.log(nameSplit[1]);
             if (nameSplit.length > 1){//nameSplit.length > 1 =>如果有get到資料
                 connection.queryAsync(`INSERT INTO stock (stock_id, stock_name) VALUE ('${nameSplit[0]}', '${nameSplit[1]}');`); 
+
             }
+            //表示　
+          
             console.log(nameSplit);
             console.log(response.data);
         }
