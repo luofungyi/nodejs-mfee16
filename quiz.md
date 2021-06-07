@@ -2,6 +2,7 @@
 請問下列程式執行後的結果為何？為什麼？
 
 (1) 
+
 回答:
 
 start->IIFE->end->Timeout
@@ -19,6 +20,7 @@ event loop: 看stack清空時推setTimeout上stack，stack:console.log("Timeout"
 所以console: start->IIFE->end->Timeout
 
 (2) 
+
 回答:
 
 start->IIFE->end->Timeout
@@ -36,6 +38,7 @@ event loop:看stack清空時推setTimeout上stack，stack:console.log("Timeout")
 所以console: start->IIFE->end->Timeout
 
 (3) 
+
 回答:
 
 foo->bar->baz
@@ -50,6 +53,7 @@ bar()呼叫後console.log("bar") ,
 baz()呼叫後console.log("baz")
 
 (4) 
+
 回答:
 
 foo->baz->bar
