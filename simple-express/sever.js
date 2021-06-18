@@ -2,6 +2,7 @@
 const express = require("express");
 // 利用 expresss 建立一個 express application app
 let app = express();
+const port = 3000;
 
 // module < package < framework
 // express is a package，但完整到足以被稱為是框架
@@ -10,6 +11,8 @@ let app = express();
 // 在 express 裡
 // req -> router
 // req -> middlewares..... -> router
+app.use(express.static("public"));
+
 app.use(function (req, res, next) {
   let current = new Date();
   console.log(`有人來訪問了喔 在 ${current}`);
