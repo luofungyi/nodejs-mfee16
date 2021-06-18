@@ -12,4 +12,4 @@ console.log(item.getColor());
 
 item.setColor("Yellow");
 
-console.log(item.getColor());
+console.log(item.getColor()); 
