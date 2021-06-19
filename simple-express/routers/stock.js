@@ -2,7 +2,7 @@
 const express = require('express');
 // 可以把 router 想成一個小的獨立的應用
 const router = express.Router();
-const connection = require('./utils/db');
+const connection = require('../utils/db');
 
 // let app = express();
 // app.use
