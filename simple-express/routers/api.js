@@ -16,37 +16,15 @@ router.get('/stock', async (req, res) => {
     });
 });
 
-$(function () {
-    var app = new Vue({
-        el: '#app',
-        data: {
-            stocks: [],
-        },
-        beforeMount: async function () {
-            let response = await fetch('api/stocks');
-            this.stovks = await response.json();
-        },
-    });
-
-    $.ajax({
-        type: 'GET',
-        url: '/api/stocks',
-    }).done(function (data) {
-        console.log(gata);
-    });
-
-    axios.get('api/stock').then((res) => {
-        console.log(res.data);
-    });
-
-    fetch('/api/stocks')
-        .then((res) => {
-            return res.json();
-        })
-        .then((data) => {
-            console.log(data);
-        });
+router.get('/stocks/:stockCode', async (req, res) => {
+    let stockdetail = await connection.queryAsync(
+        'SELECT * FROM stock_price WHERE stock_id = ? ORDER BY date;',
+        req.params.stockCode
+    );
+    res.json(stockdetail);
 });
+
+
 
 // 3
 module.exports = router;
