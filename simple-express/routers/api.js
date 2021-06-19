@@ -16,16 +16,16 @@ router.get('/', async (req, res) => {
     });
 });
 
-axios
-    .get('api/stock')
-    .then((response) => {
-        // handle success
-        console.log(response.data);
-    })
-    .catch((error) => {
-        // handle error
-        console.log(error, 'error了喔');
-    });
+// axios
+//     .get('api/stock')
+//     .then((response) => {
+//         // handle success
+//         console.log(response.data);
+//     })
+//     .catch((error) => {
+//         // handle error
+//         console.log(error, 'error了喔');
+//     });
 
 // 3
 module.exports = router;
