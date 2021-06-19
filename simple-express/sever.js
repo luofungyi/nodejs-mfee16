@@ -38,6 +38,10 @@ app.use(function (req, res, next) {
   next();
 });
 
+// 放在所有中間鍵底下
+let stockRouter = require("./routers/stock");
+app.use("/stock", stockRouter);
+
 // 路由 router
 // (request, response) {} 去回應這個請求
 app.get("/", function (req, res) {
@@ -60,12 +64,19 @@ app.get("/test", function (req, res) {
   res.send("Test Express");
 });
 
-app.get("/stock", async (req, res) => {
-  let queryResults = await connection.queryAsync("SELECT * FROM stock;");
-  res.render("stock/list", {
-    stocks: queryResults,
-  });
-});
+// app.get("/stock", async (req, res) => {
+//   let queryResults = await connection.queryAsync("SELECT * FROM stock;");
+//   res.render("stock/list", {
+//     stocks: queryResults,
+//   });
+// });
+
+// app.get("/stock/:stockCode", async (req, res) => {
+//   let queryResults = await connection.queryAsync("SELECT * FROM stock_price WHERE stock_id = ? ORDER BY date;", req.params.stockCode);
+//   res.render("stock/detail", {
+//       stockPrices: queryResults,
+//   })
+// })
 
 app.listen(3000, async () => {
   // 在 web server 開始的時候，去連線資料庫
