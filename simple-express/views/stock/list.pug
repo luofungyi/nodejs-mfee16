@@ -9,5 +9,8 @@ block content
         th 股票名子
        each   stock in stocks
         tr
-            td #{stock.stoovk_id}
-            td #{stock.stoovk_name}
+            td
+            a(href=`stock/${stock.stock_id}`) #{stock.stoovk_id}
+            td 
+            a(href=`stock/${stock.stock_name}`)  #{stock.stoovk_name}
+               
