@@ -1,5 +1,4 @@
 const connection = require('./utils/db');
-
 // http://expressjs.com/en/starter/hello-world.html
 // 導入 express 這個 package
 const express = require('express');
@@ -12,7 +11,7 @@ let app = express();
 // 可以指定一個或多個目錄是「靜態資源目錄」
 // 自動幫你為 public 裡面的檔案建立路由
 app.use(express.static('public'));
-app.use('/admin', express.static('public-admin'));
+// app.use('/admin', express.static('public-admin'));
 
 // 設定一些 application 變數
 // 第一個是變數 views
@@ -42,6 +41,9 @@ app.use(function (req, res, next) {
 let stockRouter = require('./routers/stock');
 app.use('/stock', stockRouter);
 
+let apiRouter = require('./routers/api');
+app.use('/api', apiRouter);
+
 // 路由 router
 // (request, response) {} 去回應這個請求
 app.get('/', function (req, res) {
@@ -63,6 +65,17 @@ app.get('/about', function (req, res, next) {
 
 app.get('/test', function (req, res) {
     res.send('Test Express');
+});
+
+//路由的下面
+app.use(function (req, res) {
+    res.status(404);
+    res.render('404');
+});
+
+app.use(function (err, req, res, next) {
+    res.status(505);
+    res.render('505');
 });
 
 // 搬去 stock.js
