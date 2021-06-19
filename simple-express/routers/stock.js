@@ -9,20 +9,48 @@ const connection = require("./utils/db");
 // app.get
 
 router.get("/", async (req, res) => {
+    // 檢查
+    let stock = await connection.queryAsync("SELECT * FROM stock WHERE stock_id = ?",
+    req.params.stockCode
+    
+    );
+
+    if (stock.length === 0) {
+         throw new Error("查無代碼");
+    }
+
+    stock = stock[0];
+
+    let queryResults = await connection.queryAsync("SELECT * FROM stock_price WHERE stock_id = ? ORDER BY date;");
+    req.params.stockCode
+    });
+
+    let count = await connection.queryAsync(
+      "SELECT COUNT(*) as total FROM stock_price WHERE stock_id =?;",
+      req.params.stockCode
+    )
+
+    const total = count[0].total;
+    const perPage = 10;
+    const lastPage = Math.ceil(total/perPage);
+
+
     let queryResults = await connection.queryAsync("SELECT * FROM stock;");
     res.render("stock/list", {
       stocks: queryResults,
     });
-  });
-  
 
 router.get("/:stockCode", async (req, res) => {
     let queryResults = await connection.queryAsync("SELECT * FROM stock_price WHERE stock_id = ? ORDER BY date;", req.params.stockCode);
     res.render("stock/detail", {
-        stockPrices: queryResults,
-    })
-  })
+      stock,
+      stockPrices: queryResults,
+      pagination: {
+        lastPage,
+        currentPage,
+        total,
+      },
+    });
+  });
   
-
-
 module.exports = router;

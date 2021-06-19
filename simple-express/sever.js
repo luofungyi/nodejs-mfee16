@@ -33,7 +33,7 @@ app.use(function (req, res, next) {
 // req -> middleware..... -> router
 app.use(function (req, res, next) {
   let current = new Date();
-  console.log(`有人來訪問了喔 在 ${current}`);
+  console.log(`有訪客 在 ${current}`);
   // 「幾乎」都要呼叫，讓他往下繼續
   next();
 });
@@ -46,6 +46,7 @@ app.use("/stock", stockRouter);
 // (request, response) {} 去回應這個請求
 app.get("/", function (req, res) {
   // res.send("Hello Express BBB");
+  // 首頁指向檔案
   res.render("index");
   // views/index.pug
 });
@@ -64,6 +65,7 @@ app.get("/test", function (req, res) {
   res.send("Test Express");
 });
 
+// 搬去 stock.js
 // app.get("/stock", async (req, res) => {
 //   let queryResults = await connection.queryAsync("SELECT * FROM stock;");
 //   res.render("stock/list", {
@@ -81,5 +83,5 @@ app.get("/test", function (req, res) {
 app.listen(3000, async () => {
   // 在 web server 開始的時候，去連線資料庫
   await connection.connectAsync();
-  console.log(`我跑起來了喔 在 port 3000`);
+  console.log(`已執行 在 port 3000`);
 });

@@ -1,15 +1,15 @@
 extends ../_layouts/master
 
 block content
-    h1 資料頁
+    h1 資料頁: #{stock}
 
     table
        tr 
-        th 日期
-        th 開盤價
-        th 最高價
-        th 最低價
-        th 收盤價
+        th 我是日期
+        th 我是開盤價
+        th 我是最高價
+        th 我是最低價
+        th 我是收盤價
         //-  each   stock in stocks
         each price in stockPrice
         tr
@@ -18,4 +18,8 @@ block content
             td #{price.high_price}
             td #{price.low_price}
             td #{price.close_price}
+
+    .pagination 
+    - for(var p = 1; p <= pagination.lastPage; p++)
+      a(href=`/stock/${stock.stock_id}?page=${p}`, class=p==pagination.currentPage?"active":"") #{p}
                

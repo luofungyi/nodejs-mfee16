@@ -3,14 +3,14 @@ extends ../_layouts/master
 block content
     h1 列表頁
 
-    table
-       tr 
-        th 股票代號
-        th 股票名子
-       each   stock in stocks
-        tr
-            td
-            a(href=`stock/${stock.stock_id}`) #{stock.stoovk_id}
-            td 
-            a(href=`stock/${stock.stock_name}`)  #{stock.stoovk_name}
+     table 
+    tr 
+      th 股票代號
+      th 股票名
+    each stock in stocks
+      tr 
+        td 
+          a(href=`/stock/${stock.stock_id}`) #{stock.stock_id}
+        td
+          a(href=`/stock/${stock.stock_name}`) #{stock.stock_name}
                
