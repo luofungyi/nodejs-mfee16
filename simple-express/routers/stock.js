@@ -18,11 +18,11 @@ router.get('/', async (req, res) => {
 router.get('/:stockCode', async (req, res, next) => {
     let stock = await connection.queryAsync(
         'SELECT * FROM stock WHERE stock_id=?;',
-        req.params.stockCode
+        req.params.stockCode //req.params -> 拿路由參數 , req.query -> 拿query string
     );
     if (stock.length === 0) {
         throw new Error('查無代碼');
-        next
+        next();
     }
     stock = stock[0];
 
@@ -35,9 +35,12 @@ router.get('/:stockCode', async (req, res, next) => {
     const perPage = 10;
     const lastPage = Math.ceil(total / perPage);
 
+    const currentPage = req.query.page || 1;
+    const offset = (currentPage - 1) * perPage;
+
     let queryResults = await connection.queryAsync(
         'SELECT * FROM stock_price WHERE stock_id = ? ORDER BY date LIMIT ? OFFSET ?;',
-        req.params.stockCode
+        [req.params.stockCode, perPage, offset]
     );
     res.render('stock/detail', {
         stock,

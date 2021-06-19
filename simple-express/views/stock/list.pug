@@ -1,3 +1,5 @@
+//- views/stock/list.pug
+//- views/_layouts/master
 extends ../_layouts/master
 
 block content
@@ -11,6 +13,5 @@ block content
       tr 
         td 
           a(href=`/stock/${stock.stock_id}`) #{stock.stock_id}
-        td
-          a(href=`/stock/${stock.stock_name}`) #{stock.stock_name}
+        td #{stock.stock_name}
                

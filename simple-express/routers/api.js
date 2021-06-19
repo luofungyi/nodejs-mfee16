@@ -6,7 +6,7 @@ const axios = require('axios');
 // 連資料庫
 const connection = require('../utils/db');
 
-router.get('/', async (req, res) => {
+router.get('/stock', async (req, res) => {
     let queryResults = await connection.queryAsync('SELECT * FROM stock;');
 
     res.json(queryResults);
@@ -16,16 +16,37 @@ router.get('/', async (req, res) => {
     });
 });
 
-// axios
-//     .get('api/stock')
-//     .then((response) => {
-//         // handle success
-//         console.log(response.data);
-//     })
-//     .catch((error) => {
-//         // handle error
-//         console.log(error, 'error了喔');
-//     });
+$(function () {
+    var app = new Vue({
+        el: '#app',
+        data: {
+            stocks: [],
+        },
+        beforeMount: async function () {
+            let response = await fetch('api/stocks');
+            this.stovks = await response.json();
+        },
+    });
+
+    $.ajax({
+        type: 'GET',
+        url: '/api/stocks',
+    }).done(function (data) {
+        console.log(gata);
+    });
+
+    axios.get('api/stock').then((res) => {
+        console.log(res.data);
+    });
+
+    fetch('/api/stocks')
+        .then((res) => {
+            return res.json();
+        })
+        .then((data) => {
+            console.log(data);
+        });
+});
 
 // 3
 module.exports = router;
