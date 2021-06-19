@@ -15,9 +15,6 @@ router.get('/', async (req, res) => {
     });
 });
 
-
-
-
 axios.get('api/stock')
   .then((response) => {
     // handle success
