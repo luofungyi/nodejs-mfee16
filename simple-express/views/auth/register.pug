@@ -1,0 +1,23 @@
+extends ../_layouts/master
+
+block content
+    h1 註冊表單
+
+    from.form#registerFrm(method = "POST",action="/auth/register")
+    div
+        label(for="email") Email 
+        input(name="email", type="mail")
+
+    div
+        label(for="password") Password 
+        input(name="password", type="password")
+    
+    div
+        label(for="comfirmPassword") ComfirmPassword 
+        input(name="comfirmPassword", type="comfirmPassword")
+    
+    div
+        label(for="name") Name 
+        input(name="name", type="name")
+    
+    button 送出
