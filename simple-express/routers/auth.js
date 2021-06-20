@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const connection =require("../utils/db");
-
 const bcrypt =require("bcrypt");
 
 // const { validationResult } = require('express-validator');

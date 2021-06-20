@@ -3,7 +3,7 @@ const express = require("express");
 let app = express();
 
 
-// 解讀 post 資料
+// 解讀 post 資料， 若 npm i boby-parser
 app.use(express.urlencoded({extended: false}));
 
 app.use(express.static("public"));
