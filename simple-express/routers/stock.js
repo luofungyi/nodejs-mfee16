@@ -22,8 +22,9 @@ router.get('/:stockCode', async (req, res, next) => {
     );
     if (stock.length === 0) {
         throw new Error('查無代碼');
-        next();
     }
+    next();
+
     stock = stock[0];
 
     let count = await connection.queryAsync(
