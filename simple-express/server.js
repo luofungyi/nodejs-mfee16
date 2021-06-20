@@ -24,6 +24,11 @@ let stockRouter =require("./routers/stock");
 app.use("/stock",stockRouter)
 let apiRouter =require("./routers/api");
 app.use("/api",apiRouter)
+let authRouter =require("./routers/auth");
+app.use("/auth",authRouter)
+// /auth 網址自定義
+
+
 app.get("/", function (req, res) {
   res.render("index");
 });
