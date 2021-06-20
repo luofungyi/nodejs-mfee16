@@ -6,11 +6,21 @@ const path = require('path');
 const multer = require('multer');
 const { body, validationResult } = require('express-validator');
 
-
 // 檔案放在
 const storage = multer.diskStorage({
     destination: function (req, res, cd) {
         cd(null, path.join(__dirname, '../', 'public', 'uploads'));
+    },
+    // firename
+});
+// multer 上傳工具
+const uploader = multer({
+    storage: storage,
+    filerfilter: function (req, res, cd) {
+        if (!file.mimetype == '') {
+            return cd (new Error("file type err "), false);
+        }
+        if(!file.originalname)
     },
 });
 
