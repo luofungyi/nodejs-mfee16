@@ -21,9 +21,9 @@ router.get('/:stockCode', async (req, res, next) => {
         req.params.stockCode //req.params -> 拿路由參數 , req.query -> 拿query string
     );
     if (stock.length === 0) {
-        throw new Error('查無代碼');
+        // throw new Error('查無代碼');
+         return next();
     }
-    next();
 
     stock = stock[0];
 
