@@ -6,18 +6,18 @@ block content
     from.form#registerFrm(method = "POST",action="/auth/register")
     div
         label(for="email") Email 
-        input(name="email", type="mail")
+        input(name="email", type="mail", value="111@mail.com")
 
     div
         label(for="password") Password 
-        input(name="password", type="password")
+        input(name="password", type="password", value="test")
     
     div
         label(for="comfirmPassword") ComfirmPassword 
-        input(name="comfirmPassword", type="comfirmPassword")
+        input(name="comfirmPassword", type="comfirmPassword", value="test")
     
     div
         label(for="name") Name 
-        input(name="name", type="name")
+        input(name="name", type="name", value="You")
     
      button(type="submit") Submit
