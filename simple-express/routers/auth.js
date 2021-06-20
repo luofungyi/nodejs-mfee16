@@ -4,8 +4,8 @@ const connection =require("../utils/db");
 
 const bcrypt =require("bcrypt");
 
-const { body, validationResult} = require("express-vaildtor");
-const { validationResult } = require('express-validator');
+// const { validationResult } = require('express-validator');
+const { body, validationResult } = require("express-validator");
 
 router.get('/register', (req, res, next) => {
     res.render('auth/register');
@@ -14,9 +14,9 @@ router.get('/register', (req, res, next) => {
 const registerRules = [
     body("email").isEmail().withMessage("請輸入正確格式"),
     body("password").isLength({ min:6 }),
-    body("comfirmPassword").coustom((value,{req}) => {
-        return value === req.body.password;
-    }),
+    body("confirmPassword").custom((value, { req }) => {
+		return value === req.body.password;
+	}),
 ];
 
 
@@ -33,9 +33,9 @@ router.post('/register',registerRules, async (req, res, next) => {
 
     let checkResult = await connection.queryAsync("SELECT * FROM　members WHERE email = ? ",
     req.body.email
-    ),
+    );
 
-    if(checkResult.length > 0) {
+    if (checkResult.length > 0) {
         return next (new Error("已經註冊"));
     }
     let result = await connection.queryAsync("INSTERT INTO members (email, passord, name)VALUES (?)",[[req.body.email, await bcrypt.hash(req.body.password, 10), req.body.name]]);
