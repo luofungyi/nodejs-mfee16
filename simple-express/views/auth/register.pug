@@ -3,7 +3,7 @@ extends ../_layouts/master
 block content
     h1 註冊表單
 
-    from.form#registerFrm(method = "POST",action="/auth/register")
+    from.form#registerFrm(method = "POST",action="/auth/register", enctype="multipart/form-data")
     div
         label(for="email") Email 
         input(name="email", type="mail", value="111@mail.com")
@@ -19,5 +19,9 @@ block content
     div
         label(for="name") Name 
         input(name="name", type="name", value="You")
-    
+
+    div
+        label(for="photo") Photo 
+        input(name="photo", type="file")
+
      button(type="submit") Submit
