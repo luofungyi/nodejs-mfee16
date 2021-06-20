@@ -1,11 +1,12 @@
-const express = require('express');
 const router = express.Router();
+const express = require('express');
 const connection = require('../utils/db');
 const bcrypt = require('bcrypt');
 const path = require('path');
+const multer = require('multer');
 const { body, validationResult } = require('express-validator');
 
-const multer = require('multer');
+
 // 檔案放在
 const storage = multer.diskStorage({
     destination: function (req, res, cd) {
