@@ -47,6 +47,8 @@ app.use('/api', apiRouter);
 let authRouter = require('./routers/auth');
 app.use('/auth', authRouter);
 // /auth 網址自定義
+let memberRouter = require('./routers/member');
+app.use('/member', memberRouter);
 
 app.get('/', function (req, res) {
     console.log('這是首頁');

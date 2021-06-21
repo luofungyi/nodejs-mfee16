@@ -125,11 +125,21 @@ router.post('/login', loginRules, async (req, res) => {
         res.redirect(303, '/login');
         // res.send('登入成功');
     } else {
-        req.session.isLogin = true;
+        req.session.isLogin = null;
+
+        req.session.message = {
+            title: "登入失敗",
+            text :"請填寫正確帳號密碼"
+        }
         res.send('登入失敗');
     }
 
-    res.send('登入結果 ?');
+    // res.send('登入結果 ?');
+});
+
+router.get('/logout', (req, res) => {
+    req.render('auth/rlogin');
+
 });
 
 module.exports = router;
